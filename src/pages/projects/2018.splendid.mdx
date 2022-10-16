@@ -1,0 +1,85 @@
+---
+layout: "../../layouts/Layout.astro"
+year: 2018
+title: Splendid
+theme:
+  yellow: "#FFAC27"
+  bg: "#120e0f"
+  white: "#FFF"
+  grey: "#DDD"
+teaser:
+  - src: splendid/city-2.jpg
+    bg: orange
+    crop: 50
+slides:
+  - type: image
+    src: splendid/spl-logo-white.png
+    bg: bg
+    crop: 50
+  - type: image
+    src: splendid/city-2.jpg
+    bg: bg
+    crop: fill
+  - type: image
+    src: splendid/35exp-1.jpg
+    bg: grey
+    crop: fit
+  - type: image
+    src: splendid/35exp-2.jpg
+    bg: grey
+    crop: fit
+  - type: image
+    src: splendid/35exp-8.jpg
+    bg: grey
+    crop: fit
+  - type: image
+    src: splendid/35exp-21.jpg
+    bg: grey
+    crop: fit
+  - type: image
+    src: splendid/disposable-1.png
+    bg: bg
+    crop: fit
+  - type: image
+    src: splendid/disposable-2.png
+    bg: bg
+    crop: fit
+  - type: image
+    src: splendid/bootleg-tee.jpg
+    bg: cursor
+    crop: 50
+  - type: image
+    src: splendid/pop-up-promo-2.png
+    bg: white
+    crop: fit
+  - type: image
+    src: splendid/tote-photo.jpg
+    bg: bg
+    crop: 50
+  - type: image
+    src: splendid/ten-trip-1.png
+    bg: bg
+    crop: 50
+  - type: image
+    src: splendid/ten-trip-2.png
+    bg: bg
+    crop: 50
+---
+
+import Pic from "../../components/pic.svelte";
+import Theme from "../../components/theme.svelte";
+
+<Theme data={frontmatter.theme} />
+
+<Pic src="splendid/spl-logo-white.png" client:idle />
+<Pic src="splendid/city-2.jpg" client:idle />
+<Pic src="splendid/35exp-1.jpg" client:idle />
+<Pic src="splendid/35exp-2.jpg" client:idle />
+<Pic src="splendid/35exp-8.jpg" client:idle />
+<Pic src="splendid/35exp-21.jpg" client:idle />
+<Pic src="splendid/disposable-1.png" client:idle />
+<Pic src="splendid/disposable-2.png" client:idle />
+<Pic src="splendid/bootleg-tee.jpg" client:idle />
+<Pic src="splendid/pop-up-promo-2.png" client:idle />
+<Pic src="splendid/tote-photo.jpg" client:idle />
+<Pic src="splendid/ten-trip-1.png" client:idle />
