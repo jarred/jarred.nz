@@ -7,6 +7,7 @@ export interface Props {
 }
 
 const { title } = Astro.props;
+const projects = await Astro.glob('../pages/projects/*/*.mdx');
 ---
 
 <!DOCTYPE html>
@@ -25,9 +26,26 @@ const { title } = Astro.props;
 			Alpine.start();
 		</script>
 	</head>
-	<body class="font-mono p-1">
-		<slot />
-		<Hr />
-		<Navigation />
+	<body class="font-mono p-1 leading-[1em]">
+		<main>
+			<slot />
+		</main>
+		<Navigation projects={projects} />
 	</body>
 </html>
+
+<style is:global>
+  p {
+		@apply mb-[1em];
+	}
+	a{
+		@apply underline;
+	}
+	a:hover{
+    @apply bg-black text-white no-underline;
+  }
+  a:active{
+    @apply bg-black text-black;
+  }
+
+</style>
