@@ -4,26 +4,20 @@ import prefetch from "@astrojs/prefetch";
 import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
 import m2dx from "astro-m2dx";
-import remarkDirective from "remark-directive";
 
-/** @type {import('astro-m2dx').Options} */
-import image from "@astrojs/image";
+import svelte from "@astrojs/svelte";
 const m2dxOptions = {
-  styleDirectives: true
+  styleDirectives: true,
 };
 
-// https://astro.build/config
-
-// https://astro.build/config
-
-// https://astro.build/config
 export default defineConfig({
   output: "server",
-  integrations: [mdx(), tailwind(), prefetch(), image()],
+  integrations: [mdx(), tailwind(), prefetch(), svelte()],
   markdown: {
     remarkPlugins: [[m2dx, m2dxOptions]],
     extendDefaultPlugins: true,
-    astroFlavoredMarkdown: false
+    astroFlavoredMarkdown: false,
+    extendPlugins: false,
   },
-  adapter: vercel()
+  adapter: vercel(),
 });
