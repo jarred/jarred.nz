@@ -4,7 +4,7 @@ Portfolio/Archive
 
 ## Architecture
 
+- Vercel
 - Astro
-- Deno
 - Tailwind
 - Alpine
