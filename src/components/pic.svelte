@@ -12,24 +12,21 @@
 
   let srcSet =  client.buildSrcSet(src, {
       q: 1,
-      w: 16
+      w: 20
     });
 
-  const handleLoad = (event:LoadEvent) => {
-    console.log('image has loaded?', ev)
-  }
+  let observer:IntersectionObserver;
+  let isVisible = false;
 
   onMount(() => {
-    setTimeout(() => {
     srcSet =  client.buildSrcSet(src, {
       q: 86,
-      w: 2000
+      w: 1200
     });
-  }, 2200)
   })
 </script>
 
-<img class="block w-full" srcset={srcSet} alt={alt} on:load={handleLoad} />
+<img class="block w-full" srcset={srcSet} alt={alt} />
 
 <style>
 img {

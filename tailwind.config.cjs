@@ -7,7 +7,18 @@ module.exports = {
     colors: {
       black: "#000",
       white: "#FFF",
-      grey: "#EEE",
+      grey: "#808080",
+    },
+    fontFamily: {
+      mono: [
+        "IBM Plex Mono",
+        "Menlo",
+        "Consolas",
+        "Monaco",
+        "Liberation Mono",
+        "Lucida Console",
+        "monospace",
+      ],
     },
     extend: {},
   },
