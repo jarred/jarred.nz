@@ -44,7 +44,7 @@ img.low {
   image-rendering: pixelated;
 }
 img.high{
-  @apply absolute inset-0 opacity-0;
+  @apply absolute inset-0 opacity-0 object-cover block w-full h-full;
 }
 img.active{
   @apply opacity-100;

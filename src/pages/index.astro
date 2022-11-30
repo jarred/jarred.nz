@@ -7,15 +7,12 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="jarred.nz/ Index">
-
-
-  <h1>Hi, I'm @jarred.</h1>
-  <h2>Design Engineer at RNZ</h2>
-  <p>... and occasional freelance projects</p>
-
+  <main class="p-1">
+    <h1>Hi, I'm @jarred.</h1>
+    <h2>Design Engineer at RNZ</h2>
+    <p>... and occasional freelance projects</p>
+  </main>
   <Hr />
-
-    {projects.map((project) => <div class="snap-center"><Preview project={project} client:idle /></div>)}
-
+  {projects.map((project) => <div class="snap-center"><Preview project={project} client:idle /></div>)}
   <Hr />
 </Layout>
