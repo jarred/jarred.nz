@@ -1,10 +1,5 @@
-# jarred.nz
+# Jarred.nz
 
-Portfolio/Archive
-
-## Architecture
-
-- Vercel
-- Astro
-- Tailwind
-- Alpine
+/info
+/projects
+/ideas
