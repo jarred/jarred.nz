@@ -4,7 +4,10 @@ const config = defineConfig({
 	extensions: ['.svelte.md', '.md', '.svx'],
 
 	smartypants: {
-		dashes: 'oldschool'
+		quotes: true,
+		ellipses: true,
+		dashes: 'oldschool',
+		backticks: true,
 	},
 
 	remarkPlugins: [],
@@ -16,7 +19,7 @@ const config = defineConfig({
 	},
 
 	remarkPlugins: [],
-	rehypePlugins: []
+	rehypePlugins: [],
 });
 
 export default config;

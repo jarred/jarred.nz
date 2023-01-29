@@ -1,0 +1,75 @@
+:di {
+	--unit: 4px;
+	--min-col-width: 75px;
+}
+
+@screen md {
+	:di {
+		--unit: 8px;
+		--min-col-width: 100px;
+	}
+}
+
+.project-card {
+	@apply relative bg-black text-white;
+	touch-action: none;
+	& .content {
+		@apply absolute inset-0 pointer-events-none;
+		& a,
+		& button {
+			@apply pointer-events-auto;
+		}
+	}
+	& .info {
+		@apply leading-[1em];
+	}
+}
+
+[data-zoom='1'] .project-card {
+	@apply w-1cw h-1ch;
+	& .content {
+		@layout;
+		/*0*/
+	}
+}
+
+[data-zoom='2'] .project-card {
+	@apply w-2cw w-2ch md:w-3cw;
+	& .content {
+		@layout;
+		/*111
+			000
+			000 */
+	}
+	& .info {
+		@apply text-xs uppercase tracking-[0.1em];
+	}
+}
+
+[data-zoom='3'] .project-card {
+	@apply w-full md:w-4cw;
+	& .content {
+		@layout;
+		/*0000
+			0000
+			1112 */
+		& > * {
+			@apply self-end;
+		}
+	}
+}
+
+[data-zoom='4'] .project-card {
+	@apply w-[100vw] h-[100vh];
+	& .content {
+		@layout;
+		/*1114
+			0000
+			0000
+			0000
+			2221 */
+	}
+	& .info {
+		@apply font-sans text-3xl font-bold leading-[1em];
+	}
+}

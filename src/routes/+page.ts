@@ -1,3 +1,5 @@
+
+
 export const load = async ({ params }) => {
   const allProjectFiles = import.meta.glob('/src/content/projects/*.md', { eager: true })
   const projects = [];
@@ -5,7 +7,11 @@ export const load = async ({ params }) => {
     const metadata = await item.metadata;
     const slug = path.substring(path.lastIndexOf("/") + 1, path.lastIndexOf(".md"));
     metadata.slug = slug;
-    projects.push(metadata);
+    if (metadata.published) {
+      projects.push(metadata);
+    }
   })
+
+
   return { projects }
 }

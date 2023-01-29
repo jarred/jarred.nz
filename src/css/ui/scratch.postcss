@@ -1,0 +1,25 @@
+.project-cards {
+	container-type: inline-size;
+	resize: both;
+	overflow: scroll;
+	@apply grid grid-cols-4 content-start;
+}
+
+.project-card {
+	@apply aspect-square;
+}
+
+@container (min-width: 700px) {
+	.project-cards {
+		@apply grid-cols-2;
+	}
+	.project-card {
+		@apply aspect-video;
+	}
+}
+
+@container (min-width: 800px) {
+	.project-card {
+		@apply bg-tahiti text-white p-2;
+	}
+}
