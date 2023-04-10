@@ -1,6 +1,6 @@
 ---
-published: false
-locked: true
+published: true
+locked: false
 h1: First heading
 h2: Second heading
 year: 0000
@@ -31,14 +31,16 @@ themes:
     bg: yellow, blue-bright, orange
     text: blue-dark, blue-black, black
 frames:
-  crop: fit
-  featured: true
-  max: 1
-  size: 1x1
-  image: /alkjdfhasdf/asdfkjasdlkfa
-  inset: 1
-  theme: theme1
-  alt: xyz
+  - crop: fit
+    featured: true
+    w: 4000
+    h: 1909
+    max: 1
+    min: 3
+    image: almighty/bottles-group.jpg
+    inset: 2
+    theme: theme1
+    alt: xyz
 ---
 
 How does this work?

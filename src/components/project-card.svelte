@@ -1,17 +1,17 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
-	import type { Project, Theme } from '$lib/types';
-	import type { SiteStore } from '$lib/site-store';
+	import type { IProject, ITheme } from '$lib/types';
+	import type { ISiteStore } from '$lib/site-store';
 	import ThemeCss from './theme-css.svelte';
 	import Media from './media/index.svelte';
 	import { firstTheme, themesFromObj } from '$lib/theme';
 
 	export let item: any;
-	const { zoom }: SiteStore = getContext('site');
+	const { zoom }: ISiteStore = getContext('site');
 	const url = `/projects/${item.slug}`;
-	const content: Project = item;
+	const content: IProject = item;
 	let el: HTMLElement;
-	let themes: Theme[] = themesFromObj(content.themes, content.colors);
+	let themes: ITheme[] = themesFromObj(content.themes, content.colors);
 	console.log(themes);
 </script>
 

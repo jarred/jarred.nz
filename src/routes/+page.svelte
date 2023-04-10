@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { PageData } from './$types';
-	export let data: PageData;
+	import type { IPageData } from './$types';
+	export let data: IPageData;
 	import ProjectCard from '../components/project-card.svelte';
 	import Settings from '../components/settings.svelte';
 </script>

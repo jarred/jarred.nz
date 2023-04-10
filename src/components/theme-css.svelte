@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { ColorItem, Theme } from '$lib/types';
+	import type { IColorItem, ITheme } from '$lib/types';
 	import { colorVars } from '$lib/theme';
-	export let colors: ColorItem[];
-	export let themes: Theme[];
+	export let colors: IColorItem[];
+	export let themes: ITheme[];
 	let inlineCss = colorVars(colors);
 	// let objs =
 

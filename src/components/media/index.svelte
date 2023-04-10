@@ -1,12 +1,12 @@
 <script lang="ts">
-	import type { ColorItem, Frame, Theme } from '$lib/types';
+	import type { IColorItem, IFrame, ITheme } from '$lib/types';
 	import { themeFromSlug } from '$lib/theme';
 	import Img from '../img.svelte';
-	import Crop from './crop.svelte';
-	export let frames: Frame[];
+	import Frame from './frame.svelte';
+	export let frames: IFrame[];
 	export let featured: boolean = false;
-	export let themes: Theme[];
-	export let colours: ColorItem[];
+	export let themes: ITheme[];
+	export let colours: IColorItem[];
 
 	if (featured) {
 		frames = frames.filter((item) => {
@@ -18,11 +18,11 @@
 </script>
 
 <div class="media absolute inset-0">
-	{#each frames as item}
-		<Crop theme={themeFromSlug(item.theme, themes)}>
-			{#if item.image}
-				<Img src={item.image} alt={item.alt} />
+	{#if frames}
+		<Frame theme={themeFromSlug(frames[0].theme, themes)}>
+			{#if frames[0].image}
+				<Img src={frames[0].image} alt={frames[0].alt} />
 			{/if}
-		</Crop>
-	{/each}
+		</Frame>
+	{/if}
 </div>

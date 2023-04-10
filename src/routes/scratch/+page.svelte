@@ -1,45 +1,25 @@
 <script lang="ts">
-	import Grid from '@components/grid.svelte';
-
-	import { layoutFromString } from '$lib/layout/layout-from-string';
-	import type { LayoutMatrix } from '$lib/layout/types';
-	import { bestAspectMatch } from '$lib/layout/layout';
-
-	let inputs = [
-		`1`,
-		`01
-		 02`,
-		`102
-		 333`,
-		`1022
-		 3333
-		 3333
-		 3333
-		 4445`
-	];
-	let layouts: Layout[] = [];
-
-	inputs.forEach((item) => {
-		let result = layoutFromString(item);
-		layouts.push(result);
-	});
-
-	let rows: number;
-	let cols: number;
-
-	let ratioOptions = ['1:1', '3:4', '3x6', '4:8', '4:3', '16:9'];
+	import TextAnimation from '@components/text-animation.svelte';
 </script>
 
-<div class="outer w-[400px] h-[400px] bg-black overflow-scroll resize-both">
-	<Grid bind:rows bind:cols>
-		<div class="bg-[#f03] text-white col-span-2 row-span-2 p-unit">
-			{cols}:{rows} => {ratioOptions[bestAspectMatch(`${cols}:${rows}`, ratioOptions)]}
+<div class="absolute inset-0 overflow-auto">
+	<div class="_grid" style="--cols: 5;">
+		<div style={`--h:3;--w:2;`}>
+			<div class="text-black text-[3vw]">
+				<TextAnimation>
+					<p>Here is some text!</p>
+				</TextAnimation>
+			</div>
+			<div class="text-black absolute left-0 bottom-0 p-unit z-10">...</div>
 		</div>
-	</Grid>
+		<div class="in" style={`--h:1;--w:2;--in:1;`}><div /></div>
+		<div class="edge" style={`--h:1;--w:3`}><div /></div>
+		<div style={`--h:2;--w:2;`}><div /></div>
+		<div class="in" style={`--h:4;--w:4;--in:1;`}>
+			<div class="text-black text-[2vw]">
+				<TextAnimation>And some more...</TextAnimation>
+			</div>
+			<div class="absolute left-0 bottom-0 p-unit">...</div>
+		</div>
+	</div>
 </div>
-
-<style>
-	.outer {
-		resize: both;
-	}
-</style>

@@ -1,4 +1,4 @@
-import type { LayoutMatrix, Cell } from "./types";
+import type { ILayoutMatrix, ICell } from "$lib/types"
 
 const DEBUG = false;
 
@@ -53,7 +53,7 @@ const rowSpan = (id: string, rows: any[]): number => {
   return total;
 };
 
-const extractLayout = (matrix: string): Cell[] => {
+const extractLayout = (matrix: string): ICell[] => {
   // find all the ids
   let ids = matrix
     .replace(/\t+/g, "")
@@ -81,7 +81,7 @@ const extractLayout = (matrix: string): Cell[] => {
     rows.push(row);
   });
 
-  let cells: Cell[] = [];
+  let cells: ICell[] = [];
 
   ids.forEach((id) => {
     let col_start = colStart(id, rows);
@@ -102,7 +102,7 @@ const extractLayout = (matrix: string): Cell[] => {
   return cells;
 };
 
-export const layoutFromString = (matrix: string): LayoutMatrix => {
+export const layoutFromString = (matrix: string): ILayoutMatrix => {
   if (DEBUG) console.log(`generateLayout(${matrix})`);
   let min_rows = 1;
   let min_cols = 1;

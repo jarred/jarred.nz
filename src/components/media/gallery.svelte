@@ -1,19 +1,21 @@
 <script lang="ts">
-	import type { Frame, Theme } from '$lib/types';
-	import Crop from './crop.svelte';
+	import type { IFrame, ITheme } from '$lib/types';
+	import Frame from './frame.svelte';
 	import Img from '@components/img.svelte';
 	import { themeFromSlug } from '$lib/theme';
+	import Grid from '@components/grid.svelte';
 
-	export let items: Frame[];
-	export let themes: Theme[];
+	export let items: IFrame[];
+	export let themes: ITheme[];
 </script>
 
-<div class="w-[300px] h-[300px]">
-	{#each items as item}
-		<Crop theme={themeFromSlug(item.theme, themes)}>
+<div class="w-full">
+	{#each items as item, index}
+		<Frame theme={themeFromSlug(item.theme, themes)}>
 			{#if item.image}
-				<Img src={item.image} alt={item.alt} />
+				<div><Img src={item.image} alt={item.alt} /></div>
 			{/if}
-		</Crop>
+			<div class="absolute bottom-0 top-0 p-unit">{index}</div>
+		</Frame>
 	{/each}
 </div>

@@ -32,16 +32,15 @@
 		rows = Math.round(h / minColWidth);
 	};
 
-	$: css = `--cell-w:${cellW};--cell-h:${cellH};grid-template-rows:repeat(${rows}, 1fr);grid-template-columns:repeat(${cols}, 1fr);`;
+	$: css = `--cols:${cols};grid-template-columns:repeat(${cols}, 1fr);`;
 </script>
 
-<div class="overflow-auto relative w-full h-full grid" bind:this={el} style={css}>
+<div class="_grid" bind:this={el} style={css}>
+	<slot />
+
 	<div class="text-gray">
 		<div class="p-unit">{cols}:{rows}</div>
 	</div>
-
-	<slot />
-
 	{#if DEBUG > 0 && ratio}
 		<div class="absolute inset-0 pointer-events-none opacity-75 z-50">
 			{#if DEBUG === 2}
@@ -69,3 +68,9 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	.grid > * {
+		min-height: var(--cell-h);
+	}
+</style>

@@ -2,7 +2,7 @@ import { browser } from '$app/environment';
 import { writable, readable, get } from "svelte/store";
 import type { Readable, Writable } from "svelte/store/index";
 
-export interface SiteStore{
+export interface ISiteStore{
   zoom: Writable<string>;
 }
 

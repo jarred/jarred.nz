@@ -1,4 +1,4 @@
-import type { ColorItem, Theme } from "./types";
+import type { IColorItem, ITheme } from "./types";
 import postcss from "postcss";
 import postcssJs from "postcss-js";
 

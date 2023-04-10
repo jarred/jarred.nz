@@ -1,4 +1,4 @@
-export interface Project {
+export interface IProject {
   title: string;
   year: number;
   locked: boolean;
@@ -9,21 +9,21 @@ export interface Project {
   frames: Frame[];
 }
 
-export interface Collaborators {
+export interface ICollaborators {
   [key: string]: string[]
 }
 
-export interface Theme {
+export interface ITheme {
   slug: string;
   bg: string[];
   text: string[];
 }
 
-export interface ColorItem {
+export interface IColorItem {
   [key: string]: string
 }
 
-export interface MediaItem {
+export interface IMediaItem {
   src: string;
   bg: string;
   size: "1:1" | "1:2" | "2:1" | "4:3" | "3:4" | "6:9" | "9:6" | "16:9" | "9:16";
@@ -33,12 +33,14 @@ export interface MediaItem {
 }
 
 
-export interface Frame {
+export interface IFrame {
   crop: 'fit' | 'fill';
   focal: string; // could be 50.262/3463.3463 or  4% 85%
-  inset: number;
-  max: number;
-  size: string; // can be 16x9 1:1 3/4
+  min: number; // minimum number of columns wide it should render
+  max: number;  // ^ *maximum
+  w: number; // in pixels
+  h: number; // in pixels
+  inset: number | 'unit'; // number is number of columns
   theme: string;
   //
   alt?: string;
@@ -46,4 +48,19 @@ export interface Frame {
   image?: string;
   video?: string;
   svg?: string;
+}
+
+export interface ILayoutMatrix {
+  matrix?: string;
+  min_rows?: number;
+  min_cols?: number;
+  cells?: Array<Cell>;
+}
+
+export interface ICell {
+  id: number;
+  col_span: number;
+  row_span: number;
+  col_start?: number;
+  row_start?: number;
 }

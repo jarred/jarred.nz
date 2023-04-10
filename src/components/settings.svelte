@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
-	import type { SiteStore } from '$lib/store';
-	const { zoom }: SiteStore = getContext('site');
+	import type { ISiteStore } from '$lib/store';
+	const { zoom }: ISiteStore = getContext('site');
 	const zoomOptions = ['1', '2', '3', '4'];
 	const handleZoom = (n: string) => {
 		zoom.set(n);

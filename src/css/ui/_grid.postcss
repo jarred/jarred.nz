@@ -1,0 +1,31 @@
+.\_grid {
+	--row: calc(100vw / var(--cols));
+	--cols: 8;
+	--unit: 8px;
+	--h: 1;
+	--in: 0;
+
+	@apply bg-black text-white grid w-full text-[8px] relative;
+
+	grid-template-columns: repeat(var(--cols), 1fr);
+	width: calc(var(--row) * var(--cols));
+
+	& > * {
+		@apply bg-[blue] relative;
+		min-height: calc(var(--row) * var(--h));
+		grid-column: span var(--w) / span var(--w);
+
+		& > *:first-child {
+			@apply absolute inset-[var(--in)] bg-white;
+		}
+	}
+
+	& .in > *:first-child {
+		--inset: calc(var(--row) * var(--in));
+		@apply inset-[var(--inset)];
+	}
+
+	& .edge > *:first-child {
+		@apply inset-[var(--unit)];
+	}
+}
