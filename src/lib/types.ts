@@ -64,3 +64,10 @@ export interface ICell {
   col_start?: number;
   row_start?: number;
 }
+
+
+export interface ISlideshowItem {
+  frame: IFrame;
+  colors: IColorItem[];
+  theme: ITheme;
+}

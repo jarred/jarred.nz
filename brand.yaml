@@ -1,0 +1,44 @@
+---
+colors:
+  - black: '#000'
+  - white: '#FFF'
+  - grey: '#808080'
+  - blue: '#00F'
+themes:
+  - default:
+      content: [white, black, grey]
+      bg: blue
+      accent: yellow
+fonts:
+  - font-weight-style: /src/to/font-file.woff #comments if you need them?
+  - sohne-400-italic: /src/kldjahlf/akdshjf.woff2
+type:
+  - styleName: [<font>, <weight>, <style>, <leading>, <tracking>, etc...]
+  - h1: [sohne, 400, italic, 1, -3, uppercase, numeric-alt]
+unit: em # or col,row,px,<value> (px)
+scales:
+  padding: [1, 4, 7, 8]
+  margin:
+    top: [3, 6, 8, 9]
+    left: [4, 7, 8]
+layouts:
+  layoutName: >
+    0001 0002 10+2 1+22 
+         0001 30+2 3+22
+                   4444
+  alignLogo: >
+    0+0 
+    +1+
+    0+0
+  post: >
+    0001 0002 10+2 1+22 
+         0001 30+2 3+22
+                   4444
+modules:
+  - module@layout: [img, h1, h2, <module-name>]
+  - logo@alignLogo: [svg]
+  - cta:
+templates:
+  - post: []
+---
+

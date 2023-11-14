@@ -7,9 +7,7 @@ import postcssJs from "postcss-js";
 //   return output;
 // }
 
-
 const trimArrayItems = (input: string[]) => {
-  
   return input.map(item => {
     console.log(item);
     return item.trim()
@@ -24,27 +22,24 @@ export const colorVars = (input: {[key: string]: string}):string => {
   return output; 
 }
 
-export const firstTheme = (input: any): Theme => {
+export const firstTheme = (input: any): ITheme => {
   let n = Object.keys(input)[0];
   console.log(n);
   return input[n];
 }
 
-export const themeFromSlug = (slug: string, themes: Theme[]): Theme => {
-
+export const themeFromSlug = (slug: string, themes: ITheme[]): ITheme => {
   let match = themes.find((item) => {
     return item.slug === slug;
   })
-
   return match;
-  
 }
 
-export const themesFromObj = (input:any, colors: ColorItem[]):Theme[] => {
-  let output: Theme[] = [];
+export const themesFromObj = (input:any, colors: IColorItem[]):ITheme[] => {
+  let output: ITheme[] = [];
   Object.keys(input).forEach((themeSlug) => {
     let item = input[themeSlug];
-    let theme:Theme = {
+    let theme:ITheme = {
       slug: themeSlug,
       bg: trimArrayItems(item.bg.split(",")),
       text: trimArrayItems(item.text.split(","))
@@ -55,13 +50,13 @@ export const themesFromObj = (input:any, colors: ColorItem[]):Theme[] => {
   return output;
 }
 
-export const genThemeObj = (input: any, colors: ColorItem[]):any => {
+export const genThemeObj = (input: any, colors: IColorItem[]):any => {
   let output = {};
   Object.keys(input).forEach((themeSlug, index) => {
     let item = input[themeSlug];
     let bg = trimArrayItems(item.bg.split(","))
     let text = trimArrayItems(item.text.split(","));
-    let theme:Theme = {
+    let theme:ITheme = {
       slug: themeSlug,
       bg,
       text
@@ -70,7 +65,7 @@ export const genThemeObj = (input: any, colors: ColorItem[]):any => {
     Object.assign(output, result);
     // also set default theme
     if (index === 0) {
-      let defaultTheme:Theme = {
+      let defaultTheme:ITheme = {
         slug: 'default',
         bg,
         text
@@ -79,10 +74,33 @@ export const genThemeObj = (input: any, colors: ColorItem[]):any => {
       Object.assign(output, defaultThemeCss);
     }
   })
-
   return output;
-  
 }
+
+export const buildThemeVars = (theme: ITheme): string => {
+  
+
+
+  // let primary = theme[0];
+  // let secondary = theme[1];
+  // let tertiary = theme[2];
+
+  const itemVars = (name:string, input: IColorItem): string => {
+    let s = `--${name}:${input.hex};`
+    if (input.dark) {
+      s+= `--${name}-text:white;`
+    } else {
+      s+= `--${name}-text:black;`
+    }
+    return s;
+  }
+  let output = "";
+  // output += itemVars("primary", primary);
+  // output += itemVars("secondary", secondary);
+  // output += itemVars("tertiary", tertiary);
+  return output;
+}
+
 
 export const themeCSSFromObj = (theme:Theme, colors: ColorItem[]) => {
 
@@ -97,6 +115,11 @@ export const themeCSSFromObj = (theme:Theme, colors: ColorItem[]) => {
     }) as ColorItem;
     output[selector][`--color-${slug}`] = colors[slug];
   })
+  //
+
+  if (typeof theme.bg === 'string') theme.bg = [theme.bg];
+  if (typeof theme.text === 'string') theme.text = [theme.text];
+
   // add backgrounds
   theme.bg.forEach((colorSlug, index: number) => {
     let n = index + 1;
